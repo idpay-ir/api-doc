@@ -202,7 +202,7 @@
     <link href="images/favicon.ico" rel="icon" type="image/ico" />
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;php&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;php&quot;,&quot;go&quot;,&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -214,6 +214,8 @@
         <div class="lang-selector">
               <a href="#" data-language-name="shell">cUrl</a>
               <a href="#" data-language-name="php">PHP</a>
+              <a href="#" data-language-name="go">Go</a>
+              <a href="#" data-language-name="javascript">Node</a>
         </div>
       <ul id="toc" class="toc-list-h1">
           <li>
@@ -308,7 +310,9 @@
 <td></td>
 </tr>
 </tbody></table>
-<h1 id='c92c9baf91'>تراکنش</h1><h2 id='2c82b7acb2'>ایجاد تراکنش</h2><pre class="highlight shell tab-shell"><code>curl -X POST https://api.idpay.ir/v1/payment <span class="se">\</span>
+<h1 id='c92c9baf91'>تراکنش</h1><h2 id='2c82b7acb2'>ایجاد تراکنش</h2>
+<p>با استفاده از آدرس زیر می‌توانید یک تراکنش جدید ایجاد کنید.</p>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://api.idpay.ir/v1/payment <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'X-API-KEY: 965b0483-4519-46b0-aca0-1a6971dc2781'</span> <span class="se">\</span>
   -H <span class="s1">'X-SANDBOX: true'</span> <span class="se">\</span>
@@ -343,17 +347,9 @@
 <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
 
 <span class="k">return</span> <span class="nv">$result</span><span class="p">;</span>
-</code></pre>
-<blockquote>
-<p>با اجرای دستور بالا پاسخی مشابه متن زیر با فرمت JSON دریافت می‌شود:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d2e353189823079e1e4181772cff5292"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://idpay.ir/p/ws-sandbox/d2e353189823079e1e4181772cff5292"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>با استفاده از آدرس زیر می‌توانید یک تراکنش جدید ایجاد کنید.</p>
-<h3 id='b71308368c'>آدرس درخواست</h3>
+</code></pre><pre class="highlight go tab-go"><code><span class="x">
+</span></code></pre><pre class="highlight javascript tab-javascript"><code>
+</code></pre><h3 id='b71308368c'>آدرس درخواست</h3>
 <p><code>POST https://api.idapy.ir/v1/payment</code></p>
 <h3 id='6464f26c70'>پارامترهای مورد نیاز</h3>
 <table><thead>
@@ -395,8 +391,19 @@
 <td>آدرس بازگشت به سایت پذیرنده ؛ به طول حداکثر 255 کاراکتر</td>
 </tr>
 </tbody></table>
-<h3 id='89ddccb166'>داده های دریافتی</h3>
-<p>در پاسخ، مقادیر <code>id</code> و <code>link</code> باز میگردد که بهتر است آنها را در دیتابیس خود ذخیره کنید.</p>
+
+<blockquote>
+<p>با اجرای دستور بالا پاسخی مشابه متن زیر با فرمت JSON دریافت می‌شود:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d2e353189823079e1e4181772cff5292"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://idpay.ir/p/ws-sandbox/d2e353189823079e1e4181772cff5292"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='3b251a9953'>پاسخ</h3>
+<p>درصورتیکه درخواست موفق باشد، وضعیت <code>201 Created</code> اعلام خواهد شد.</p>
+
+<p>در پاسخ، مقادیر <code>id</code> و <code>link</code> باز میگردد که بهتر است آنها را در دیتابیس خود ذخیره کنید.
+بعد از ذخیره اطلاعات دریافتی، پرداخت کننده باید به لینک دریافت شده منتقل شود.</p>
 <h2 id='972fadbc1d'>بازگشت به سایت پذیرنده</h2>
 <p>بعد از اتمام عملیات پرداخت، درصورتیکه پرداخت با موفقیت انجام شده باشد، پرداخت کننده به آدرسی که پذیرنده در <code>callback</code> مشخص کرده بود منتقل می‌شود.</p>
 <h3 id='ee5b6b4f0d'>پارامترهای ارسالی</h3>
@@ -438,8 +445,9 @@
 <td>زمان پرداخت تراکنش</td>
 </tr>
 </tbody></table>
-<h2 id='2c4c448629'>استعلام وضعیت تراکنش</h2><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-  https://api.idpay.ir/v1/payment/inquiry <span class="se">\</span>
+<h2 id='2c4c448629'>استعلام وضعیت تراکنش</h2>
+<p>با استفاده از آدرس زیر می‌توانید آخرین وضعیت یک تراکنش را دریافت نمایید.</p>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://api.idpay.ir/v1/payment/inquiry <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'X-API-KEY: 965b0483-4519-46b0-aca0-1a6971dc2781'</span> <span class="se">\</span>
   -H <span class="s1">'X-SANDBOX: true'</span> <span class="se">\</span>
@@ -468,21 +476,9 @@
 <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
 
 <span class="k">return</span> <span class="nv">$result</span><span class="p">;</span>
-</code></pre>
-<blockquote>
-<p>با اجرای دستور بالا پاسخی مشابه متن زیر با فرمت JSON دریافت می‌شود:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"track_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10012"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d2e353189823079e1e4181772cff5292"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1533559373"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>با استفاده از آدرس زیر می‌توانید آخرین وضعیت یک تراکنش را دریافت نمایید.</p>
-<h3 id='b71308368c'>آدرس درخواست</h3>
+</code></pre><pre class="highlight go tab-go"><code><span class="x">
+</span></code></pre><pre class="highlight javascript tab-javascript"><code>
+</code></pre><h3 id='b71308368c'>آدرس درخواست</h3>
 <p><code>POST https://api.idapy.ir/v1/payment/inquiry</code></p>
 <h3 id='6464f26c70'>پارامترهای مورد نیاز</h3>
 <table><thead>
@@ -506,7 +502,19 @@
 <td>شماره سفارش پذیرنده که در مرحله <a href="#2c82b7acb2">ایجاد تراکنش</a> ارسال شده است</td>
 </tr>
 </tbody></table>
-<h3 id='89ddccb166'>داده های دریافتی</h3>
+
+<blockquote>
+<p>با اجرای دستور بالا پاسخی مشابه متن زیر با فرمت JSON دریافت می‌شود:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"track_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10012"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d2e353189823079e1e4181772cff5292"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1533559373"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='3b251a9953'>پاسخ</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -601,6 +609,8 @@
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">cUrl</a>
                 <a href="#" data-language-name="php">PHP</a>
+                <a href="#" data-language-name="go">Go</a>
+                <a href="#" data-language-name="javascript">Node</a>
           </div>
       </div>
     </div>
