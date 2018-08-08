@@ -202,7 +202,7 @@
     <link href="images/favicon.ico" rel="icon" type="image/ico" />
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;php&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -213,6 +213,7 @@
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">cUrl</a>
+              <a href="#" data-language-name="php">PHP</a>
         </div>
       <ul id="toc" class="toc-list-h1">
           <li>
@@ -229,6 +230,9 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#2c82b7acb2" class="toc-h2 toc-link" data-title="ایجاد تراکنش">ایجاد تراکنش</a>
+                  </li>
+                  <li>
+                    <a href="#972fadbc1d" class="toc-h2 toc-link" data-title="بازگشت به سایت پذیرنده">بازگشت به سایت پذیرنده</a>
                   </li>
                   <li>
                     <a href="#2c4c448629" class="toc-h2 toc-link" data-title="استعلام وضعیت تراکنش">استعلام وضعیت تراکنش</a>
@@ -250,13 +254,13 @@
 <p>این راهنما نحوه اتصال برنامه نویسان به درگاه های پرداخت از طریق API آیدی پی را توضیح میدهد.</p>
 
 <p>API آیدی پی به روش <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> سازماندهی شده است.
-همچنین بدنه درخواست ها و پاسخ ها با فرمت <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> می باشند.</p>
+همچنین بدنه درخواست ها و پاسخ ها با فرمت <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> می‌باشد.</p>
 
-<p>شما میتوانید نمونه کدها را در ستون سمت چپ صفحه مشاهده کنید و درصورت تمایل میتوانید از طریق تب های بالای صفحه ، نمونه کدهای زبان های برنامه نویسی مختلف را انتخاب کنید.</p>
+<p>شما می‌توانید نمونه کدها را در ستون سمت چپ صفحه مشاهده کنید و درصورت تمایل می‌توانید از طریق تب های بالای صفحه، نمونه کدهای زبان های برنامه نویسی مختلف را انتخاب کنید.</p>
 <h1 id='cee8b80267'>احراز هویت</h1>
-<p>برای استفاده از API های آیدی پی نیاز به یک API KEY است. شما میتوانید به داشبورد خود در آیدی پی رفته و در بخش <a href="https://idpay.ir/dashboard/web-services">وب سرویس‌های من</a> ، یک وب سرویس جدید ایجاد کنید.</p>
+<p>برای استفاده از API های آیدی پی نیاز به یک API KEY است. شما می‌توانید به داشبورد خود در آیدی پی رفته و در بخش <a href="https://idpay.ir/dashboard/web-services">وب سرویس‌های من</a>، یک وب سرویس جدید ایجاد کنید.</p>
 
-<p>بعد از ایجاد وب سرویس ، API KEY خود را دریافت میکنید و میتوانید برای فراخوانی API از آن استفاده کنید.</p>
+<p>بعد از ایجاد وب سرویس، API KEY خود را دریافت می‌کنید و می‌توانید برای فراخوانی API از آن استفاده کنید.</p>
 
 <p>برای ارسال تمام درخواست ها باید API KEY را مانند مثال زیر در header ارسال نمایید:</p>
 
@@ -282,8 +286,8 @@
 شما باید مقدار <code>965b0483-4519-46b0-aca0-1a6971dc2781</code> را با API KEY منحصر بفرد خود تغییر دهید.
 </aside>
 <h1 id='cea080fca4'>آزمایشگاه</h1>
-<p>برای تست API و نحوه کارکرد آن میتوانید در header درخواست های خود کلید <code>X-SANDBOX</code> را ارسال کنید.
-در صورتیکه مقدار این پارامتر <code>true</code> باشد ، تمام فرایندهای بعدی بصورت آزمایشی ایجاد و شبیه سازی میشوند.</p>
+<p>برای تست API و نحوه کارکرد آن می‌توانید در header درخواست های خود کلید <code>X-SANDBOX</code> را ارسال کنید.
+در صورتیکه مقدار این پارامتر <code>true</code> باشد، تمام فرایندهای بعدی بصورت آزمایشی ایجاد و شبیه سازی می‌شوند.</p>
 
 <p>مقدار پیش فرض این پارامتر <code>false</code> است.</p>
 
@@ -315,16 +319,40 @@
   "desc": "توضیحات پرداخت کننده",
   "callback": "https://example.com/idpay-web-service.php"
 }'</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$params</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+  <span class="s1">'order_id'</span> <span class="o">=&gt;</span> <span class="mi">101</span><span class="p">,</span>
+  <span class="s1">'amount'</span> <span class="o">=&gt;</span> <span class="mi">10000</span><span class="p">,</span>
+  <span class="s1">'phone'</span> <span class="o">=&gt;</span> <span class="s1">'09382198592'</span><span class="p">,</span>
+  <span class="s1">'desc'</span> <span class="o">=&gt;</span> <span class="s1">'توضیحات پرداخت کننده'</span><span class="p">,</span>
+  <span class="s1">'callback'</span> <span class="o">=&gt;</span> <span class="s1">'https://example.com/idpay-web-service.php'</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://api.idpay.ir/v1/payment'</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$params</span><span class="p">));</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="k">TRUE</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+  <span class="s1">'Content-Type: application/json'</span><span class="p">,</span>
+  <span class="s1">'X-API-KEY: 965b0483-4519-46b0-aca0-1a6971dc2781'</span><span class="p">,</span>
+  <span class="s1">'X-SANDBOX: true'</span>
+<span class="p">));</span>
+
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+
+<span class="k">return</span> <span class="nv">$result</span><span class="p">;</span>
 </code></pre>
 <blockquote>
-<p>با اجرای دستور بالا پاسخی مشابه متن زیر با فرمت JSON دریافت میشود:</p>
+<p>با اجرای دستور بالا پاسخی مشابه متن زیر با فرمت JSON دریافت می‌شود:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d2e353189823079e1e4181772cff5292"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://idpay.ir/p/ws-sandbox/d2e353189823079e1e4181772cff5292"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>با استفاده از آدرس زیر میتوانید یک تراکنش جدید ایجاد کنید.</p>
+<p>با استفاده از آدرس زیر می‌توانید یک تراکنش جدید ایجاد کنید.</p>
 <h3 id='b71308368c'>آدرس درخواست</h3>
 <p><code>POST https://api.idapy.ir/v1/payment</code></p>
 <h3 id='6464f26c70'>پارامترهای مورد نیاز</h3>
@@ -368,7 +396,48 @@
 </tr>
 </tbody></table>
 <h3 id='89ddccb166'>داده های دریافتی</h3>
-<p>در پاسخ ، مقادیر <code>id</code> و <code>link</code> باز میگردد که بهتر است آنها را در دیتابیس خود ذخیره کنید.</p>
+<p>در پاسخ، مقادیر <code>id</code> و <code>link</code> باز میگردد که بهتر است آنها را در دیتابیس خود ذخیره کنید.</p>
+<h2 id='972fadbc1d'>بازگشت به سایت پذیرنده</h2>
+<p>بعد از اتمام عملیات پرداخت، درصورتیکه پرداخت با موفقیت انجام شده باشد، پرداخت کننده به آدرسی که پذیرنده در <code>callback</code> مشخص کرده بود منتقل می‌شود.</p>
+<h3 id='ee5b6b4f0d'>پارامترهای ارسالی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>integer</td>
+<td><a href="#ad39f18522">وضعیت تراکنش</a></td>
+</tr>
+<tr>
+<td>track_id</td>
+<td>integer</td>
+<td>کد رهگیری آیدی پی</td>
+</tr>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>کلید منحصر بفرد تراکنش که در مرحله <a href="#c92c9baf91">ایجاد تراکنش</a> دریافت شده است</td>
+</tr>
+<tr>
+<td>order_id</td>
+<td>string</td>
+<td>شماره سفارش پذیرنده که در مرحله <a href="#c92c9baf91">ایجاد تراکنش</a> ارسال شده است</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>مبلغ ثبت شده هنگام <a href="#c92c9baf91">ایجاد تراکنش</a></td>
+</tr>
+<tr>
+<td>date</td>
+<td>timestamp</td>
+<td>زمان پرداخت تراکنش</td>
+</tr>
+</tbody></table>
 <h2 id='2c4c448629'>استعلام وضعیت تراکنش</h2><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
   https://api.idpay.ir/v1/payment/inquiry <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
@@ -378,9 +447,30 @@
   "id": "d2e353189823079e1e4181772cff5292",
   "order_id": "101"
 }'</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$params</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+  <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'d2e353189823079e1e4181772cff5292'</span><span class="p">,</span>
+  <span class="s1">'order_id'</span> <span class="o">=&gt;</span> <span class="mi">101</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://api.idpay.ir/v1/payment/inquiry'</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$params</span><span class="p">));</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="k">TRUE</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+  <span class="s1">'Content-Type: application/json'</span><span class="p">,</span>
+  <span class="s1">'X-API-KEY: 965b0483-4519-46b0-aca0-1a6971dc2781'</span><span class="p">,</span>
+  <span class="s1">'X-SANDBOX: true'</span>
+<span class="p">));</span>
+
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+
+<span class="k">return</span> <span class="nv">$result</span><span class="p">;</span>
 </code></pre>
 <blockquote>
-<p>با اجرای دستور بالا پاسخی مشابه متن زیر با فرمت JSON دریافت میشود:</p>
+<p>با اجرای دستور بالا پاسخی مشابه متن زیر با فرمت JSON دریافت می‌شود:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
@@ -391,7 +481,7 @@
   </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1533559373"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>با استفاده از آدرس زیر میتوانید آخرین وضعیت یک تراکنش را دریافت نمایید.</p>
+<p>با استفاده از آدرس زیر می‌توانید آخرین وضعیت یک تراکنش را دریافت نمایید.</p>
 <h3 id='b71308368c'>آدرس درخواست</h3>
 <p><code>POST https://api.idapy.ir/v1/payment/inquiry</code></p>
 <h3 id='6464f26c70'>پارامترهای مورد نیاز</h3>
@@ -510,6 +600,7 @@
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">cUrl</a>
+                <a href="#" data-language-name="php">PHP</a>
           </div>
       </div>
     </div>
