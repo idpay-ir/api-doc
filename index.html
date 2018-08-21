@@ -243,9 +243,6 @@
           <li>
             <a href="#ad39f18522" class="toc-h1 toc-link" data-title="وضعیت تراکنش">وضعیت تراکنش</a>
           </li>
-          <li>
-            <a href="#226e39a2ad" class="toc-h1 toc-link" data-title="خطاها">خطاها</a>
-          </li>
       </ul>
     </div>
     <div class="page-wrapper">
@@ -290,6 +287,8 @@
 <p>برای تست API و نحوه کارکرد آن می‌توانید در header درخواست های خود کلید <code>X-SANDBOX</code> را ارسال کنید.
 در صورتیکه مقدار این پارامتر <code>true</code> باشد، تمام فرایندهای بعدی بصورت آزمایشی ایجاد و شبیه سازی می‌شوند.</p>
 
+<p>همچنین در این حالت حساسیت IP در درخواست های ارسال شده اعمال نمی‌شود، و میتوان درخواست ها را از هر IPی اجرا کرد.</p>
+
 <p>مقدار پیش فرض این پارامتر <code>false</code> است.</p>
 
 <p><code>X-SANDBOX: true</code></p>
@@ -311,6 +310,10 @@
 </tbody></table>
 <h1 id='c92c9baf91'>تراکنش</h1><h2 id='2c82b7acb2'>ایجاد تراکنش</h2>
 <p>با استفاده از آدرس زیر می‌توانید یک تراکنش جدید ایجاد کنید.</p>
+
+<aside class="notice">
+دامنه آدرس بازگشت به سایت پذیرنده یا <code>callback</code> باید مطابق با آدرسی باشد که در <a href="https://idpay.ir/dashboard/web-services">وب سرویس‌های من</a> تعریف شده است.
+</aside>
 <pre class="highlight shell tab-shell"><code>curl -X POST https://api.idpay.ir/v1/payment <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'X-API-KEY: 965b0483-4519-46b0-aca0-1a6971dc2781'</span> <span class="se">\</span>
@@ -398,7 +401,7 @@
 
 </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">body</span><span class="p">))</span><span class="x">
 </span></code></pre><h3 id='b71308368c'>آدرس درخواست</h3>
-<p><code>POST https://api.idapy.ir/v1/payment</code></p>
+<p><code>POST https://api.idpay.ir/v1/payment</code></p>
 <h3 id='6464f26c70'>پارامترهای مورد نیاز</h3>
 <table><thead>
 <tr>
@@ -447,13 +450,78 @@
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d2e353189823079e1e4181772cff5292"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://idpay.ir/p/ws-sandbox/d2e353189823079e1e4181772cff5292"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='3b251a9953'>پاسخ</h3>
+</span></code></pre><h3 id='090a5fe93e'>وضعیت پاسخ</h3>
+<table><thead>
+<tr>
+<th>کد</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>201</td>
+<td>تراکنش ایجاد شد</td>
+</tr>
+<tr>
+<td>403</td>
+<td>API Key نامعتبر است</td>
+</tr>
+<tr>
+<td>403</td>
+<td>IP درخواست نامعتبر است</td>
+</tr>
+<tr>
+<td>403</td>
+<td>سرویس پرداخت تایید نشده است</td>
+</tr>
+<tr>
+<td>403</td>
+<td>دریافت کننده مسدود شده است</td>
+</tr>
+<tr>
+<td>403</td>
+<td>حساب بانکی سرویس تایید نشده است</td>
+</tr>
+<tr>
+<td>404</td>
+<td>سرویس پرداخت یافت نشد</td>
+</tr>
+<tr>
+<td>406</td>
+<td>پارامتر ارسالی نامعتبر است (شماره سفارش، مبلغ، شماره تلفن همراه در صورت ارسال، آدرس بازگشت)</td>
+</tr>
+<tr>
+<td>406</td>
+<td>سرویس در حال حاضر غیرفعال است</td>
+</tr>
+</tbody></table>
+<h3 id='3b251a9953'>پاسخ</h3>
 <p>درصورتیکه درخواست موفق باشد، وضعیت <code>201 Created</code> اعلام خواهد شد.</p>
 
 <p>در پاسخ، مقادیر <code>id</code> و <code>link</code> باز میگردد که بهتر است آنها را در دیتابیس خود ذخیره کنید.
 بعد از ذخیره اطلاعات دریافتی، پرداخت کننده باید به لینک دریافت شده منتقل شود.</p>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>کلید منحصر بفرد تراکنش</td>
+</tr>
+<tr>
+<td>link</td>
+<td>string</td>
+<td>لینک پرداخت برای انتقال خریدار به آن</td>
+</tr>
+</tbody></table>
 <h2 id='972fadbc1d'>بازگشت به سایت پذیرنده</h2>
 <p>بعد از اتمام عملیات پرداخت، درصورتیکه پرداخت با موفقیت انجام شده باشد، پرداخت کننده به آدرسی که پذیرنده در <code>callback</code> مشخص کرده بود منتقل می‌شود.</p>
+
+<p>همچنین پارامترهای زیر به آدرس <code>callback</code> تعریف شده در مرحله <a href="#2c82b7acb2">ایجاد تراکنش</a> <code>POST</code> می‌شود.</p>
 <h3 id='ee5b6b4f0d'>پارامترهای ارسالی</h3>
 <table><thead>
 <tr>
@@ -525,7 +593,7 @@
 <span class="nv">$result</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
 <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
 
-<span class="k">return</span> <span class="nv">$result</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'request'</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
@@ -570,7 +638,7 @@
 
 </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">body</span><span class="p">))</span><span class="x">
 </span></code></pre><h3 id='b71308368c'>آدرس درخواست</h3>
-<p><code>POST https://api.idapy.ir/v1/payment/inquiry</code></p>
+<p><code>POST https://api.idpay.ir/v1/payment/inquiry</code></p>
 <h3 id='6464f26c70'>پارامترهای مورد نیاز</h3>
 <table><thead>
 <tr>
@@ -605,7 +673,43 @@
   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1533559373"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='3b251a9953'>پاسخ</h3>
+</span></code></pre><h3 id='090a5fe93e'>وضعیت پاسخ</h3>
+<table><thead>
+<tr>
+<th>کد</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>پاسخ دریافت شد</td>
+</tr>
+<tr>
+<td>403</td>
+<td>API Key نامعتبر است</td>
+</tr>
+<tr>
+<td>403</td>
+<td>IP درخواست نامعتبر است</td>
+</tr>
+<tr>
+<td>403</td>
+<td>سرویس پرداخت تایید نشده است</td>
+</tr>
+<tr>
+<td>403</td>
+<td>دریافت کننده مسدود شده است</td>
+</tr>
+<tr>
+<td>404</td>
+<td>سرویس پرداخت یافت نشد</td>
+</tr>
+<tr>
+<td>406</td>
+<td>پارامتر ارسالی نامعتبر است (شماره سفارش، کلید منحصر بفرد تراکنش)</td>
+</tr>
+</tbody></table>
+<h3 id='3b251a9953'>پاسخ</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -676,28 +780,6 @@
 <tr>
 <td>100</td>
 <td>پرداخت تایید شده است</td>
-</tr>
-</tbody></table>
-<h1 id='226e39a2ad'>خطاها</h1>
-<p>توضیح خطاهای متداول هنگام استفاده از API در جدول زیر آمده است:</p>
-
-<table><thead>
-<tr>
-<th>کد خطا</th>
-<th>توضیحات</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>درخواست اشتباه است</td>
-</tr>
-<tr>
-<td>401</td>
-<td>دسترسی شما غیر مجاز است</td>
-</tr>
-<tr>
-<td>403</td>
-<td>اطلاعات ارسال شده اشتباه است</td>
 </tr>
 </tbody></table>
 
