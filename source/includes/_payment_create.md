@@ -5,7 +5,7 @@
 ```shell
 curl -X POST https://api.idpay.ir/v1/payment \
   -H 'Content-Type: application/json' \
-  -H 'X-API-KEY: 965b0483-4519-46b0-aca0-1a6971dc2781' \
+  -H 'X-API-KEY: 6a7f99eb-7c20-4412-a972-6dfb7cd253a4' \
   -H 'X-SANDBOX: true' \
   -d '{
   "order_id": 101,
@@ -32,7 +32,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($params));
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
   'Content-Type: application/json',
-  'X-API-KEY: 965b0483-4519-46b0-aca0-1a6971dc2781',
+  'X-API-KEY: 6a7f99eb-7c20-4412-a972-6dfb7cd253a4',
   'X-SANDBOX: true'
 ));
 
@@ -52,7 +52,7 @@ var options = {
   url: 'https://api.idpay.ir/v1/payment',
   headers: {
     'Content-Type': 'application/json',
-    'X-API-KEY': '965b0483-4519-46b0-aca0-1a6971dc2781',
+    'X-API-KEY': '6a7f99eb-7c20-4412-a972-6dfb7cd253a4',
     'X-SANDBOX': true,
   },
   body: {
@@ -88,7 +88,7 @@ payload, _ := json.Marshal(data)
 req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
 
 req.Header.Set("Content-Type", "application/json")
-req.Header.Set("X-API-KEY", "965b0483-4519-46b0-aca0-1a6971dc2781")
+req.Header.Set("X-API-KEY", "6a7f99eb-7c20-4412-a972-6dfb7cd253a4")
 req.Header.Set("X-SANDBOX", "true")
 
 res, _ := http.DefaultClient.Do(req)
