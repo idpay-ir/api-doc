@@ -10,9 +10,9 @@ curl -X POST https://api.idpay.ir/v1.1/payment \
   -d '{
   "order_id": 101,
   "amount": 10000,
-  "name": "",
+  "name": "قاسم رادمان",
   "phone": "09382198592",
-  "email": "",
+  "mail": "foo@bar.com",
   "desc": "توضیحات پرداخت کننده",
   "callback": "https://example.com/callback"
 }'
@@ -23,9 +23,9 @@ curl -X POST https://api.idpay.ir/v1.1/payment \
 $params = array(
   'order_id' => '101',
   'amount' => 10000,
-  'name' => '',
+  'name' => 'قاسم رادمان',
   'phone' => '09382198592',
-  'email' => '',
+  'mail' => 'foo@bar.com',
   'desc' => 'توضیحات پرداخت کننده',
   'callback' => 'https://example.com/callback',
 );
@@ -62,9 +62,9 @@ var options = {
   body: {
     'order_id': '101',
     'amount': 10000,
-    'name' => '',
-    'phone' => '09382198592',
-    'email' => '',
+    'name': 'قاسم رادمان',
+    'phone': '09382198592',
+    'mail': 'foo@bar.com',
     'desc': 'توضیحات پرداخت کننده',
     'callback': 'https://example.com/callback',
   },
@@ -84,9 +84,9 @@ url := "https://api.idpay.ir/v1.1/payment"
 data := map[string]string{
   "order_id": "101",
   "amount":   "10000",
-  "name":     "",
+  "name":     "قاسم رادمان",
   "phone":    "09382198592",
-  "email":    "",
+  "mail":    "foo@bar.com",
   "desc":     "توضیحات پرداخت کننده",
   "callback": "https://example.com/callback",
 }
@@ -119,7 +119,7 @@ order_id | string | بله | شماره سفارش پذیرنده<br/>به طو�
 amount | integer | بله | مبلغ قابل پرداخت به ریال<br/>مبلغ باید بین 10,000 ریال تا 500,000,000 ریال باشد
 name | string | خیر | نام پرداخت کننده<br/>به طول حداکثر 255 کاراکتر
 phone | string | خیر | تلفن همراه پرداخت کننده<br/>به طول 11 کاراکتر<br/>مثل 09382198592
-email | string | خیر | پست الکترونیک پرداخت کننده<br/>به طول حداکثر 255 کاراکتر
+mail | string | خیر | پست الکترونیک پرداخت کننده<br/>به طول حداکثر 255 کاراکتر
 desc | string | خیر | توضیح تراکنش<br/>به طول حداکثر 255 کاراکتر
 callback | string | بله | آدرس بازگشت به سایت پذیرنده<br/>به طول حداکثر 2048 کاراکتر
 

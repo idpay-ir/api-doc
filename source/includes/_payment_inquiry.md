@@ -116,8 +116,32 @@ order_id | string | بله | شماره سفارش پذیرنده که در مر
   "id": "d2e353189823079e1e4181772cff5292",
   "order_id": "101",
   "amount": "10000",
-  "card_no": "610433******1064",
-  "date": "1533559373"
+  "date": "1533559373",
+  "wage": {
+    "by": "payee",
+    "type": "percent",
+    "amount": "2500"
+  },
+  "payer": {
+    "name": "قاسم رادمان",
+    "phone": "09382198592",
+    "mail": "foo@bar.com",
+    "desc": "توضیحات پرداخت کننده"
+  },
+  "payment": {
+    "amount": "10000",
+    "date": "1548840562",
+    "track_id": "",
+    "card_no": "610433******1064"
+  },
+  "verify": {
+    "date": "1548840561"
+  },
+  "settlement": {
+    "amount": "7500",
+    "date": "",
+    "track_id": ""
+  }
 }
 ```
 
@@ -139,8 +163,27 @@ track_id | integer | کد رهگیری آیدی پی
 id | string | کلید منحصر بفرد تراکنش که در مرحله [ایجاد تراکنش](#2c82b7acb2) دریافت شده است
 order_id | string | شماره سفارش پذیرنده که در مرحله [ایجاد تراکنش](#2c82b7acb2) ارسال شده است
 amount | integer | مبلغ ثبت شده هنگام [ایجاد تراکنش](#2c82b7acb2)
-card_no | string | شماره کارت پرداخت کننده با فرمت `123456******1234`
-date | timestamp | زمان پرداخت تراکنش
+date | timestamp | زمان ایجاد تراکنش
+wage | object | اطلاعات کارمزد تراکنش
+<span class="tree-col">by</span>| string |دریافت کارمزد از دریافت کننده / پرداخت کننده
+<span class="tree-col">type</span>| string |نوع کارمزد تراکنش (مبلغ ثابت، درصدی، پلکانی)
+<span class="tree-col">amount</span>| integer |مبلغ کارمزد تراکنش
+payer | object | اطلاعات پرداخت کننده تراکنش
+<span class="tree-col">name</span>| string |نام پرداخت کننده
+<span class="tree-col">phone</span>| string |شماره تلفن همراه پرداخت کننده
+<span class="tree-col">mail</span>| string |پست الکترونیک پرداخت کننده
+<span class="tree-col">desc</span>| string |توضیحات پرداخت کننده
+payment | object | اطلاعات پرداخت تراکنش
+<span class="tree-col">amount</span>| integer |مبلغ قابل پرداخت
+<span class="tree-col">date</span>| timestamp |زمان پرداخت تراکنش
+<span class="tree-col">track_id</span>| string |کد رهگیری پرداخت
+<span class="tree-col">card_no</span>| string | شماره کارت پرداخت کننده با فرمت `123456******1234`
+verify | object | اطلاعات تایید تراکنش
+<span class="tree-col">date</span>| timestamp |زمان تایید تراکنش
+settlement | object | اطلاعات واریز تراکنش
+<span class="tree-col">amount</span>| integer |مبلغ قابل واریز
+<span class="tree-col">date</span>| timestamp |زمان واریز تراکنش
+<span class="tree-col">track_id</span>| integer |کد رهگیری واریز
 
 <aside class="warning"> جهت جلوگیری از دوبار مصرف شدن یک پرداخت (Double Spending)،
 پذیرنده موظف است کلیدهای منحصر بفردی که از طریق API آیدی پی دریافت می‌کند را (مثل <code>id</code> و <code>track_id</code>)
