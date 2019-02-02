@@ -119,6 +119,12 @@ order_id | string | بله | شماره سفارش پذیرنده که در مر
   "amount": "10000",
   "card_no": "610433******1064",
   "date": "1533559373",
+  "payment": {
+    "amount": "10000",
+    "date": "1548840562",
+    "track_id": "",
+    "card_no": "610433******1064"
+  },
   "verify": {
     "date": "153356521"
   }
@@ -143,8 +149,12 @@ track_id | integer | کد رهگیری آیدی پی
 id | string | کلید منحصر بفرد تراکنش که در مرحله [ایجاد تراکنش](#2c82b7acb2) دریافت شده است
 order_id | string | شماره سفارش پذیرنده که در مرحله [ایجاد تراکنش](#2c82b7acb2) ارسال شده است
 amount | integer | مبلغ ثبت شده هنگام [ایجاد تراکنش](#2c82b7acb2)
-card_no | string | شماره کارت پرداخت کننده با فرمت `123456******1234`
 date | timestamp | زمان ایجاد تراکنش
+payment | object | اطلاعات پرداخت تراکنش
+<span class="tree-col">amount</span>| integer |مبلغ قابل پرداخت
+<span class="tree-col">date</span>| timestamp |زمان پرداخت تراکنش
+<span class="tree-col">track_id</span>| string |کد رهگیری پرداخت
+<span class="tree-col">card_no</span>| string | شماره کارت پرداخت کننده با فرمت `123456******1234`
 verify | object | اطلاعات تایید تراکنش
 <span class="tree-col">date</span>| timestamp |زمان تایید تراکنش
 
