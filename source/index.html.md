@@ -18,7 +18,6 @@ includes:
   - intro
   - api_key
   - sandbox
-  - payment_intro
   - payment_create
   - payment_callback
   - payment_verify

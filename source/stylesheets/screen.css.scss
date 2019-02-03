@@ -620,7 +620,7 @@ html, body {
 // Table tree
 ////////////////////////////////////////////////////////////////////////////////
 
-.tree-col {
+table tbody tr td .indent {
   direction: ltr;
-  margin-left: 20px;
+  padding-left: 2em;
 }
