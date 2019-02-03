@@ -227,18 +227,16 @@
             <a href="#cea080fca4" class="toc-h1 toc-link" data-title="آزمایشگاه">آزمایشگاه</a>
           </li>
           <li>
-            <a href="#c92c9baf91" class="toc-h1 toc-link" data-title="تراکنش">تراکنش</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#2c82b7acb2" class="toc-h2 toc-link" data-title="ایجاد تراکنش">ایجاد تراکنش</a>
-                  </li>
-                  <li>
-                    <a href="#972fadbc1d" class="toc-h2 toc-link" data-title="بازگشت به سایت پذیرنده">بازگشت به سایت پذیرنده</a>
-                  </li>
-                  <li>
-                    <a href="#2c4c448629" class="toc-h2 toc-link" data-title="استعلام وضعیت تراکنش">استعلام وضعیت تراکنش</a>
-                  </li>
-              </ul>
+            <a href="#2c82b7acb2" class="toc-h1 toc-link" data-title="ایجاد تراکنش">ایجاد تراکنش</a>
+          </li>
+          <li>
+            <a href="#972fadbc1d" class="toc-h1 toc-link" data-title="بازگشت به سایت پذیرنده">بازگشت به سایت پذیرنده</a>
+          </li>
+          <li>
+            <a href="#83f88e9ac0" class="toc-h1 toc-link" data-title="تایید تراکنش">تایید تراکنش</a>
+          </li>
+          <li>
+            <a href="#2c4c448629" class="toc-h1 toc-link" data-title="استعلام وضعیت تراکنش">استعلام وضعیت تراکنش</a>
           </li>
           <li>
             <a href="#ad39f18522" class="toc-h1 toc-link" data-title="وضعیت تراکنش">وضعیت تراکنش</a>
@@ -246,7 +244,16 @@
           <li>
             <a href="#d7b83cfb9c" class="toc-h1 toc-link" data-title="لیست خطاها">لیست خطاها</a>
           </li>
+          <li>
+            <a href="#postman" class="toc-h1 toc-link" data-title="Postman">Postman</a>
+          </li>
       </ul>
+        <ul class="toc-footer">
+            <li><a href='https://idpay.ir/web-service/v1.1/'>v1.1</a></li>
+            <li><a href='https://idpay.ir/web-service/v1.0/'>v1.0</a></li>
+            <li>&nbsp;</li>
+            <li><a href='https://github.com/idpay-ir'>GitHub</a></li>
+        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
@@ -288,13 +295,13 @@
 </aside>
 <h1 id='cea080fca4'>آزمایشگاه</h1>
 <p>برای تست API و نحوه کارکرد آن می‌توانید در header درخواست های خود کلید <code>X-SANDBOX</code> را ارسال کنید.
-در صورتیکه مقدار این پارامتر <code>true</code> باشد، تمام فرایندهای بعدی بصورت آزمایشی ایجاد و شبیه سازی می‌شوند.</p>
+در صورتیکه مقدار این پارامتر <code>true</code> یا <code>1</code> باشد، تمام فرایندهای بعدی بصورت آزمایشی ایجاد و شبیه سازی می‌شوند.</p>
 
-<p>همچنین در این حالت حساسیت IP در درخواست های ارسال شده اعمال نمی‌شود، و میتوان درخواست ها را از هر IPی اجرا کرد.</p>
+<p>همچنین در این حالت حساسیت به آدرس وب سایت و IP در درخواست های ارسال شده اعمال نمی‌شود، و می‌توان درخواست خود را از با هر آدرس Callback یا IPی ارسال کنید.</p>
 
-<p>مقدار پیش فرض این پارامتر <code>false</code> است.</p>
+<p>مقدار پیش فرض این پارامتر <code>false</code> یا <code>0</code> است.</p>
 
-<p><code>X-SANDBOX: true</code></p>
+<p><code>X-SANDBOX: 1</code></p>
 
 <table><thead>
 <tr>
@@ -309,16 +316,18 @@
 <td>خیر</td>
 </tr>
 </tbody></table>
-<h1 id='c92c9baf91'>تراکنش</h1><h2 id='2c82b7acb2'>ایجاد تراکنش</h2>
+<h1 id='2c82b7acb2'>ایجاد تراکنش</h1>
 <p>با استفاده از آدرس زیر می‌توانید یک تراکنش جدید ایجاد کنید.</p>
-<pre class="highlight shell tab-shell"><code>curl -X POST https://api.idpay.ir/v1/payment <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://api.idpay.ir/v1.1/payment <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'X-API-KEY: 6a7f99eb-7c20-4412-a972-6dfb7cd253a4'</span> <span class="se">\</span>
-  -H <span class="s1">'X-SANDBOX: true'</span> <span class="se">\</span>
+  -H <span class="s1">'X-SANDBOX: 1'</span> <span class="se">\</span>
   -d <span class="s1">'{
   "order_id": 101,
   "amount": 10000,
+  "name": "قاسم رادمان",
   "phone": "09382198592",
+  "mail": "my@site.com",
   "desc": "توضیحات پرداخت کننده",
   "callback": "https://example.com/callback"
 }'</span>
@@ -326,41 +335,43 @@
 <span class="nv">$params</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
   <span class="s1">'order_id'</span> <span class="o">=&gt;</span> <span class="s1">'101'</span><span class="p">,</span>
   <span class="s1">'amount'</span> <span class="o">=&gt;</span> <span class="mi">10000</span><span class="p">,</span>
+  <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'قاسم رادمان'</span><span class="p">,</span>
   <span class="s1">'phone'</span> <span class="o">=&gt;</span> <span class="s1">'09382198592'</span><span class="p">,</span>
+  <span class="s1">'mail'</span> <span class="o">=&gt;</span> <span class="s1">'my@site.com'</span><span class="p">,</span>
   <span class="s1">'desc'</span> <span class="o">=&gt;</span> <span class="s1">'توضیحات پرداخت کننده'</span><span class="p">,</span>
   <span class="s1">'callback'</span> <span class="o">=&gt;</span> <span class="s1">'https://example.com/callback'</span><span class="p">,</span>
 <span class="p">);</span>
 
 <span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
-<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://api.idpay.ir/v1/payment'</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://api.idpay.ir/v1.1/payment'</span><span class="p">);</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$params</span><span class="p">));</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="k">TRUE</span><span class="p">);</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
   <span class="s1">'Content-Type: application/json'</span><span class="p">,</span>
   <span class="s1">'X-API-KEY: 6a7f99eb-7c20-4412-a972-6dfb7cd253a4'</span><span class="p">,</span>
-  <span class="s1">'X-SANDBOX: true'</span>
+  <span class="s1">'X-SANDBOX: 1'</span>
 <span class="p">));</span>
 
 <span class="nv">$result</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
-<span class="nv">$httpcode</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLINFO_HTTP_CODE</span><span class="p">);</span>
 <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
 
-<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$httpcode</span><span class="p">);</span>
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'request'</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.idpay.ir/v1/payment'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.idpay.ir/v1.1/payment'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
     <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
     <span class="s1">'X-API-KEY'</span><span class="p">:</span> <span class="s1">'6a7f99eb-7c20-4412-a972-6dfb7cd253a4'</span><span class="p">,</span>
-    <span class="s1">'X-SANDBOX'</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s1">'X-SANDBOX'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="s1">'order_id'</span><span class="p">:</span> <span class="s1">'101'</span><span class="p">,</span>
     <span class="s1">'amount'</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+    <span class="s1">'name'</span><span class="p">:</span> <span class="s1">'قاسم رادمان'</span><span class="p">,</span>
     <span class="s1">'phone'</span><span class="p">:</span> <span class="s1">'09382198592'</span><span class="p">,</span>
+    <span class="s1">'mail'</span><span class="p">:</span> <span class="s1">'my@site.com'</span><span class="p">,</span>
     <span class="s1">'desc'</span><span class="p">:</span> <span class="s1">'توضیحات پرداخت کننده'</span><span class="p">,</span>
     <span class="s1">'callback'</span><span class="p">:</span> <span class="s1">'https://example.com/callback'</span><span class="p">,</span>
   <span class="p">},</span>
@@ -372,12 +383,14 @@
 
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-</code></pre><pre class="highlight go tab-go"><code><span class="n">url</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="s">"https://api.idpay.ir/v1/payment"</span><span class="x">
+</code></pre><pre class="highlight go tab-go"><code><span class="n">url</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="s">"https://api.idpay.ir/v1.1/payment"</span><span class="x">
 
 </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="x">
   </span><span class="s">"order_id"</span><span class="o">:</span><span class="x"> </span><span class="s">"101"</span><span class="p">,</span><span class="x">
   </span><span class="s">"amount"</span><span class="o">:</span><span class="x">   </span><span class="s">"10000"</span><span class="p">,</span><span class="x">
+  </span><span class="s">"name"</span><span class="o">:</span><span class="x">     </span><span class="s">"قاسم رادمان"</span><span class="p">,</span><span class="x">
   </span><span class="s">"phone"</span><span class="o">:</span><span class="x">    </span><span class="s">"09382198592"</span><span class="p">,</span><span class="x">
+  </span><span class="s">"mail"</span><span class="o">:</span><span class="x">     </span><span class="s">"my@site.com"</span><span class="p">,</span><span class="x">
   </span><span class="s">"desc"</span><span class="o">:</span><span class="x">     </span><span class="s">"توضیحات پرداخت کننده"</span><span class="p">,</span><span class="x">
   </span><span class="s">"callback"</span><span class="o">:</span><span class="x"> </span><span class="s">"https://example.com/callback"</span><span class="p">,</span><span class="x">
 </span><span class="p">}</span><span class="x">
@@ -388,7 +401,7 @@
 
 </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span><span class="x"> </span><span class="s">"application/json"</span><span class="p">)</span><span class="x">
 </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s">"X-API-KEY"</span><span class="p">,</span><span class="x"> </span><span class="s">"6a7f99eb-7c20-4412-a972-6dfb7cd253a4"</span><span class="p">)</span><span class="x">
-</span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s">"X-SANDBOX"</span><span class="p">,</span><span class="x"> </span><span class="s">"true"</span><span class="p">)</span><span class="x">
+</span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s">"X-SANDBOX"</span><span class="p">,</span><span class="x"> </span><span class="m">1</span><span class="p">)</span><span class="x">
 
 </span><span class="n">res</span><span class="p">,</span><span class="x"> </span><span class="n">_</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">DefaultClient</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span><span class="x">
 
@@ -396,9 +409,13 @@
 </span><span class="n">body</span><span class="p">,</span><span class="x"> </span><span class="n">_</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">ioutil</span><span class="o">.</span><span class="n">ReadAll</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="p">)</span><span class="x">
 
 </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">body</span><span class="p">))</span><span class="x">
-</span></code></pre><h3 id='b71308368c'>آدرس درخواست</h3>
-<p><code>POST https://api.idpay.ir/v1/payment</code></p>
-<h3 id='6464f26c70'>پارامترهای مورد نیاز</h3>
+</span></code></pre>
+<p><strong>آدرس درخواست</strong></p>
+
+<p><code>POST https://api.idpay.ir/v1.1/payment</code></p>
+
+<p><strong>پارامترهای مورد نیاز</strong></p>
+
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -415,15 +432,27 @@
 </tr>
 <tr>
 <td>amount</td>
-<td>integer</td>
+<td>number</td>
 <td>بله</td>
-<td>مبلغ قابل پرداخت به ریال<br/>مبلغ باید بین 10,000 ریال تا 500,000,000 ریال باشد</td>
+<td>مبلغ مورد نظر به ریال<br/>مبلغ باید بین 10,000 ریال تا 500,000,000 ریال باشد</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>خیر</td>
+<td>نام پرداخت کننده<br/>به طول حداکثر 255 کاراکتر</td>
 </tr>
 <tr>
 <td>phone</td>
 <td>string</td>
 <td>خیر</td>
-<td>تلفن همراه پرداخت کننده<br/>به طول 11 کاراکتر<br/>مثل 09382198592</td>
+<td>تلفن همراه پرداخت کننده<br/>به طول 11 کاراکتر<br/>مثل 9382198592 یا 09382198592 یا 989382198592</td>
+</tr>
+<tr>
+<td>mail</td>
+<td>string</td>
+<td>خیر</td>
+<td>پست الکترونیک پرداخت کننده<br/>به طول حداکثر 255 کاراکتر</td>
 </tr>
 <tr>
 <td>desc</td>
@@ -435,10 +464,12 @@
 <td>callback</td>
 <td>string</td>
 <td>بله</td>
-<td>آدرس بازگشت به سایت پذیرنده<br/>به طول حداکثر 255 کاراکتر</td>
+<td>آدرس بازگشت به سایت پذیرنده<br/>به طول حداکثر 2048 کاراکتر</td>
 </tr>
 </tbody></table>
-<h3 id='090a5fe93e'>وضعیت پاسخ</h3>
+
+<p><strong>وضعیت پاسخ</strong></p>
+
 <table><thead>
 <tr>
 <th>کد وضعیت</th>
@@ -472,13 +503,15 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
-<p>وضعیت 406: در صورت بروز خطا پاسخی مشابه متن زیر با فرمت JSON دریافت می‌شود:</p>
+<p>وضعیت 406: در صورت بروز خطا، پاسخی مشابه متن زیر با فرمت JSON دریافت می‌شود:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
   </span><span class="s2">"error_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"شماره سفارش `order_id` نباید خالی باشد."</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='3b251a9953'>پاسخ</h3>
+</span></code></pre>
+<p><strong>پاسخ</strong></p>
+
 <p>درصورتیکه درخواست موفق باشد، وضعیت پاسخ <code>201 Created</code> اعلام خواهد شد.</p>
 
 <p>در پاسخ، مقادیر <code>id</code> و <code>link</code> باز میگردد که بهتر است آنها را در دیتابیس خود ذخیره کنید.
@@ -504,13 +537,20 @@
 </tbody></table>
 
 <aside class="notice">
+درصورتیکه هر یک از مقادیر <code>name</code> یا <code>phone</code> یا <code>mail</code>
+معتبر نباشند، خطایی باز نمی‌گردد و هیچ مقداری برای آن ذخیره نمی‌شود.
+</aside>
+
+<aside class="notice">
 دامنه آدرس بازگشت به سایت پذیرنده یا <code>callback</code> باید مطابق با آدرسی باشد که در <a href="https://idpay.ir/dashboard/web-services">وب سرویس‌های من</a> تعریف شده است.
 </aside>
-<h2 id='972fadbc1d'>بازگشت به سایت پذیرنده</h2>
+<h1 id='972fadbc1d'>بازگشت به سایت پذیرنده</h1>
 <p>بعد از اتمام عملیات پرداخت، درصورتیکه پرداخت با موفقیت انجام شده باشد، پرداخت کننده به آدرسی که پذیرنده در <code>callback</code> مشخص کرده بود منتقل می‌شود.</p>
 
 <p>همچنین پارامترهای زیر به آدرس <code>callback</code> تعریف شده در مرحله <a href="#2c82b7acb2">ایجاد تراکنش</a> <code>POST</code> می‌شود.</p>
-<h3 id='ee5b6b4f0d'>پارامترهای ارسالی</h3>
+
+<p><strong>پارامترهای ارسالی</strong></p>
+
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -520,12 +560,12 @@
 </thead><tbody>
 <tr>
 <td>status</td>
-<td>integer</td>
+<td>number</td>
 <td><a href="#ad39f18522">وضعیت تراکنش</a></td>
 </tr>
 <tr>
 <td>track_id</td>
-<td>integer</td>
+<td>number</td>
 <td>کد رهگیری آیدی پی</td>
 </tr>
 <tr>
@@ -540,7 +580,7 @@
 </tr>
 <tr>
 <td>amount</td>
-<td>integer</td>
+<td>number</td>
 <td>مبلغ ثبت شده هنگام <a href="#2c82b7acb2">ایجاد تراکنش</a></td>
 </tr>
 <tr>
@@ -554,12 +594,14 @@
 <td>زمان پرداخت تراکنش</td>
 </tr>
 </tbody></table>
-<h2 id='2c4c448629'>استعلام وضعیت تراکنش</h2>
-<p>با استفاده از آدرس زیر می‌توانید آخرین وضعیت یک تراکنش را دریافت نمایید.</p>
-<pre class="highlight shell tab-shell"><code>curl -X POST https://api.idpay.ir/v1/payment/inquiry <span class="se">\</span>
+<h1 id='83f88e9ac0'>تایید تراکنش</h1>
+<p>بعد از دریافت اطلاعات به سایت پذیرنده و اعتبار سنجی اطلاعات توسط پذیرنده،
+پذیرنده باید تراکنش را تایید کند تا پرداخت بصورت سیستمی تکمیل شود
+و از بازگشت پول به پرداخت کننده جلوگیری شود.</p>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://api.idpay.ir/v1.1/payment/verify <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'X-API-KEY: 6a7f99eb-7c20-4412-a972-6dfb7cd253a4'</span> <span class="se">\</span>
-  -H <span class="s1">'X-SANDBOX: true'</span> <span class="se">\</span>
+  -H <span class="s1">'X-SANDBOX: 1'</span> <span class="se">\</span>
   -d <span class="s1">'{
   "id": "d2e353189823079e1e4181772cff5292",
   "order_id": "101"
@@ -571,30 +613,28 @@
 <span class="p">);</span>
 
 <span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
-<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://api.idpay.ir/v1/payment/inquiry'</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://api.idpay.ir/v1.1/payment/verify'</span><span class="p">);</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$params</span><span class="p">));</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="k">TRUE</span><span class="p">);</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
   <span class="s1">'Content-Type: application/json'</span><span class="p">,</span>
   <span class="s1">'X-API-KEY: 6a7f99eb-7c20-4412-a972-6dfb7cd253a4'</span><span class="p">,</span>
-  <span class="s1">'X-SANDBOX: true'</span><span class="p">,</span>
+  <span class="s1">'X-SANDBOX: 1'</span><span class="p">,</span>
 <span class="p">));</span>
 
 <span class="nv">$result</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
-<span class="nv">$httpcode</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLINFO_HTTP_CODE</span><span class="p">);</span>
 <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
 
-<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$httpcode</span><span class="p">);</span>
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'request'</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.idpay.ir/v1/payment/inquiry'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.idpay.ir/v1.1/payment/verify'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
     <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
     <span class="s1">'X-API-KEY'</span><span class="p">:</span> <span class="s1">'6a7f99eb-7c20-4412-a972-6dfb7cd253a4'</span><span class="p">,</span>
-    <span class="s1">'X-SANDBOX'</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s1">'X-SANDBOX'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="s1">'id'</span><span class="p">:</span> <span class="s1">'d2e353189823079e1e4181772cff5292'</span><span class="p">,</span>
@@ -608,7 +648,7 @@
 
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-</code></pre><pre class="highlight go tab-go"><code><span class="n">url</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="s">"https://api.idpay.ir/v1/payment/inquiry"</span><span class="x">
+</code></pre><pre class="highlight go tab-go"><code><span class="n">url</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="s">"https://api.idpay.ir/v1.1/payment/verify"</span><span class="x">
 
 </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="x">
   </span><span class="s">"id"</span><span class="o">:</span><span class="x">       </span><span class="s">"d2e353189823079e1e4181772cff5292"</span><span class="p">,</span><span class="x">
@@ -621,7 +661,7 @@
 
 </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span><span class="x"> </span><span class="s">"application/json"</span><span class="p">)</span><span class="x">
 </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s">"X-API-KEY"</span><span class="p">,</span><span class="x"> </span><span class="s">"6a7f99eb-7c20-4412-a972-6dfb7cd253a4"</span><span class="p">)</span><span class="x">
-</span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s">"X-SANDBOX"</span><span class="p">,</span><span class="x"> </span><span class="s">"true"</span><span class="p">)</span><span class="x">
+</span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s">"X-SANDBOX"</span><span class="p">,</span><span class="x"> </span><span class="m">1</span><span class="p">)</span><span class="x">
 
 </span><span class="n">res</span><span class="p">,</span><span class="x"> </span><span class="n">_</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">DefaultClient</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span><span class="x">
 
@@ -629,9 +669,13 @@
 </span><span class="n">body</span><span class="p">,</span><span class="x"> </span><span class="n">_</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">ioutil</span><span class="o">.</span><span class="n">ReadAll</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="p">)</span><span class="x">
 
 </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">body</span><span class="p">))</span><span class="x">
-</span></code></pre><h3 id='b71308368c'>آدرس درخواست</h3>
-<p><code>POST https://api.idpay.ir/v1/payment/inquiry</code></p>
-<h3 id='6464f26c70'>پارامترهای مورد نیاز</h3>
+</span></code></pre>
+<p><strong>آدرس درخواست</strong></p>
+
+<p><code>POST https://api.idpay.ir/v1.1/payment/verify</code></p>
+
+<p><strong>پارامترهای مورد نیاز</strong></p>
+
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -653,7 +697,259 @@
 <td>شماره سفارش پذیرنده که در مرحله <a href="#2c82b7acb2">ایجاد تراکنش</a> ارسال شده است</td>
 </tr>
 </tbody></table>
-<h3 id='090a5fe93e'>وضعیت پاسخ</h3>
+
+<p><strong>وضعیت پاسخ</strong></p>
+
+<table><thead>
+<tr>
+<th>کد وضعیت</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>تایید تراکنش به موفقیت انجام شد</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#d7b83cfb9c">لیست خطاها</a></td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#d7b83cfb9c">لیست خطاها</a></td>
+</tr>
+<tr>
+<td>405</td>
+<td><a href="#d7b83cfb9c">لیست خطاها</a></td>
+</tr>
+<tr>
+<td>406</td>
+<td><a href="#d7b83cfb9c">لیست خطاها</a></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>با اجرای دستور بالا پاسخی مشابه متن زیر با فرمت JSON دریافت می‌شود:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"track_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10012"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d2e353189823079e1e4181772cff5292"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1546288200"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"track_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"888001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"card_no"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456******1234"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1546288500"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"verify"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1546288800"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>وضعیت 406: در صورت بروز خطا، پاسخی مشابه متن زیر با فرمت JSON دریافت می‌شود:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"error_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"شماره سفارش `order_id` نباید خالی باشد."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>پاسخ</strong></p>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>number</td>
+<td><a href="#ad39f18522">وضعیت تراکنش</a></td>
+</tr>
+<tr>
+<td>track_id</td>
+<td>number</td>
+<td>کد رهگیری آیدی پی</td>
+</tr>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>کلید منحصر بفرد تراکنش که در مرحله <a href="#2c82b7acb2">ایجاد تراکنش</a> دریافت شده است</td>
+</tr>
+<tr>
+<td>order_id</td>
+<td>string</td>
+<td>شماره سفارش پذیرنده که در مرحله <a href="#2c82b7acb2">ایجاد تراکنش</a> ارسال شده است</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>number</td>
+<td>مبلغ ثبت شده هنگام <a href="#2c82b7acb2">ایجاد تراکنش</a></td>
+</tr>
+<tr>
+<td>date</td>
+<td>timestamp</td>
+<td>زمان ایجاد تراکنش</td>
+</tr>
+<tr>
+<td>payment</td>
+<td>object</td>
+<td>اطلاعات پرداخت تراکنش</td>
+</tr>
+<tr>
+<td><span class="indent">track_id</span></td>
+<td>string</td>
+<td>کد رهگیری پرداخت</td>
+</tr>
+<tr>
+<td><span class="indent">amount</span></td>
+<td>number</td>
+<td>مبلغ قابل پرداخت</td>
+</tr>
+<tr>
+<td><span class="indent">card_no</span></td>
+<td>string</td>
+<td>شماره کارت پرداخت کننده با فرمت <code>123456******1234</code></td>
+</tr>
+<tr>
+<td><span class="indent">date</span></td>
+<td>timestamp</td>
+<td>زمان پرداخت تراکنش</td>
+</tr>
+<tr>
+<td>verify</td>
+<td>object</td>
+<td>اطلاعات تایید تراکنش</td>
+</tr>
+<tr>
+<td><span class="indent">date</span></td>
+<td>timestamp</td>
+<td>زمان تایید تراکنش</td>
+</tr>
+</tbody></table>
+
+<aside class="notice"> بعد از پرداخت تراکنش توسط پرداخت کننده، تراکنش باید
+ظرف مدت حداکثر <b>10 دقیقه</b> تایید شود.
+در غیر اینصورت مبلغ به کارت پرداخت کننده برگردانده خواهد شد.</aside>
+
+<aside class="warning"> جهت جلوگیری از دوبار مصرف شدن یک پرداخت (Double Spending)،
+پذیرنده موظف است کلیدهای منحصر بفردی که از طریق API آیدی پی دریافت می‌کند را (مثل <code>id</code> و <code>track_id</code>)
+در دیتابیس خود ذخیره کند و از یکتا بودن آنها اطمینان حاصل فرماید.
+<br/>
+توجه داشته باشید که ممکن است یک مشتری رسید پرداخت آیدی پی را ذخیره کند و برای یک خرید دیگر از آن استفاده کند.
+<br/>
+مسئولیت بررسی و شناسایی Double Spending کاملا به عهده پذیرنده می‌باشد.</aside>
+<h1 id='2c4c448629'>استعلام وضعیت تراکنش</h1>
+<p>با استفاده از آدرس زیر می‌توانید آخرین وضعیت یک تراکنش را دریافت نمایید.</p>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://api.idpay.ir/v1.1/payment/inquiry <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'X-API-KEY: 6a7f99eb-7c20-4412-a972-6dfb7cd253a4'</span> <span class="se">\</span>
+  -H <span class="s1">'X-SANDBOX: 1'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+  "id": "d2e353189823079e1e4181772cff5292",
+  "order_id": "101"
+}'</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="nv">$params</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+  <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'d2e353189823079e1e4181772cff5292'</span><span class="p">,</span>
+  <span class="s1">'order_id'</span> <span class="o">=&gt;</span> <span class="s1">'101'</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://api.idpay.ir/v1.1/payment/inquiry'</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$params</span><span class="p">));</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="k">TRUE</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+  <span class="s1">'Content-Type: application/json'</span><span class="p">,</span>
+  <span class="s1">'X-API-KEY: 6a7f99eb-7c20-4412-a972-6dfb7cd253a4'</span><span class="p">,</span>
+  <span class="s1">'X-SANDBOX: 1'</span><span class="p">,</span>
+<span class="p">));</span>
+
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+<span class="nv">$httpcode</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$httpcode</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'request'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.idpay.ir/v1.1/payment/inquiry'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
+    <span class="s1">'X-API-KEY'</span><span class="p">:</span> <span class="s1">'6a7f99eb-7c20-4412-a972-6dfb7cd253a4'</span><span class="p">,</span>
+    <span class="s1">'X-SANDBOX'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'id'</span><span class="p">:</span> <span class="s1">'d2e353189823079e1e4181772cff5292'</span><span class="p">,</span>
+    <span class="s1">'order_id'</span><span class="p">:</span> <span class="s1">'101'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight go tab-go"><code><span class="n">url</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="s">"https://api.idpay.ir/v1.1/payment/inquiry"</span><span class="x">
+
+</span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="x">
+  </span><span class="s">"id"</span><span class="o">:</span><span class="x">       </span><span class="s">"d2e353189823079e1e4181772cff5292"</span><span class="p">,</span><span class="x">
+  </span><span class="s">"order_id"</span><span class="o">:</span><span class="x"> </span><span class="s">"101"</span><span class="p">,</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="n">payload</span><span class="p">,</span><span class="x"> </span><span class="n">_</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">json</span><span class="o">.</span><span class="n">Marshal</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="x">
+
+</span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">_</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span><span class="x"> </span><span class="n">url</span><span class="p">,</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span><span class="x">
+
+</span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span><span class="x"> </span><span class="s">"application/json"</span><span class="p">)</span><span class="x">
+</span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s">"X-API-KEY"</span><span class="p">,</span><span class="x"> </span><span class="s">"6a7f99eb-7c20-4412-a972-6dfb7cd253a4"</span><span class="p">)</span><span class="x">
+</span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s">"X-SANDBOX"</span><span class="p">,</span><span class="x"> </span><span class="m">1</span><span class="p">)</span><span class="x">
+
+</span><span class="n">res</span><span class="p">,</span><span class="x"> </span><span class="n">_</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">DefaultClient</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span><span class="x">
+
+</span><span class="k">defer</span><span class="x"> </span><span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span><span class="x">
+</span><span class="n">body</span><span class="p">,</span><span class="x"> </span><span class="n">_</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">ioutil</span><span class="o">.</span><span class="n">ReadAll</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="p">)</span><span class="x">
+
+</span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">body</span><span class="p">))</span><span class="x">
+</span></code></pre>
+<p><strong>آدرس درخواست</strong></p>
+
+<p><code>POST https://api.idpay.ir/v1.1/payment/inquiry</code></p>
+
+<p><strong>پارامترهای مورد نیاز</strong></p>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>ضروری</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>بله</td>
+<td>کلید منحصر بفرد تراکنش که در مرحله <a href="#2c82b7acb2">ایجاد تراکنش</a> دریافت شده است</td>
+</tr>
+<tr>
+<td>order_id</td>
+<td>string</td>
+<td>بله</td>
+<td>شماره سفارش پذیرنده که در مرحله <a href="#2c82b7acb2">ایجاد تراکنش</a> ارسال شده است</td>
+</tr>
+</tbody></table>
+
+<p><strong>وضعیت پاسخ</strong></p>
+
 <table><thead>
 <tr>
 <th>کد وضعیت</th>
@@ -682,13 +978,37 @@
 <p>با اجرای دستور بالا پاسخی مشابه متن زیر با فرمت JSON دریافت می‌شود:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"track_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10012"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d2e353189823079e1e4181772cff5292"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"card_no"</span><span class="p">:</span><span class="w"> </span><span class="s2">"610433******1064"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1533559373"</span><span class="w">
+  </span><span class="s2">"wage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payee"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2500"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1546288200"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"قاسم رادمان"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"09382198592"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my@site.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"توضیحات پرداخت کننده"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"track_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"888001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"card_no"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456******1234"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1546288500"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"verify"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1546288800"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"settlement"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"track_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678900"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7500"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1546398000"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
@@ -698,7 +1018,9 @@
   </span><span class="s2">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
   </span><span class="s2">"error_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"شماره سفارش `order_id` نباید خالی باشد."</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='3b251a9953'>پاسخ</h3>
+</span></code></pre>
+<p><strong>پاسخ</strong></p>
+
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -708,12 +1030,12 @@
 </thead><tbody>
 <tr>
 <td>status</td>
-<td>integer</td>
+<td>number</td>
 <td><a href="#ad39f18522">وضعیت تراکنش</a></td>
 </tr>
 <tr>
 <td>track_id</td>
-<td>integer</td>
+<td>number</td>
 <td>کد رهگیری آیدی پی</td>
 </tr>
 <tr>
@@ -728,28 +1050,115 @@
 </tr>
 <tr>
 <td>amount</td>
-<td>integer</td>
+<td>number</td>
 <td>مبلغ ثبت شده هنگام <a href="#2c82b7acb2">ایجاد تراکنش</a></td>
 </tr>
 <tr>
-<td>card_no</td>
+<td>wage</td>
+<td>object</td>
+<td>اطلاعات کارمزد تراکنش</td>
+</tr>
+<tr>
+<td><span class="indent">by</span></td>
 <td>string</td>
-<td>شماره کارت پرداخت کننده با فرمت <code>123456******1234</code></td>
+<td>دریافت کارمزد از پذیرنده یا پرداخت کننده<br/>- پذیرنده: payee<br/>- پرداخت کننده: payer</td>
+</tr>
+<tr>
+<td><span class="indent">type</span></td>
+<td>string</td>
+<td>نوع کارمزد تراکنش<br/>- مبلغ ثابت: amount<br/>- درصدی: percent<br/>- پلکانی: stair</td>
+</tr>
+<tr>
+<td><span class="indent">amount</span></td>
+<td>number</td>
+<td>مبلغ کارمزد تراکنش</td>
 </tr>
 <tr>
 <td>date</td>
 <td>timestamp</td>
+<td>زمان ایجاد تراکنش</td>
+</tr>
+<tr>
+<td>payer</td>
+<td>object</td>
+<td>اطلاعات پرداخت کننده تراکنش</td>
+</tr>
+<tr>
+<td><span class="indent">name</span></td>
+<td>string</td>
+<td>نام پرداخت کننده</td>
+</tr>
+<tr>
+<td><span class="indent">phone</span></td>
+<td>string</td>
+<td>شماره تلفن همراه پرداخت کننده</td>
+</tr>
+<tr>
+<td><span class="indent">mail</span></td>
+<td>string</td>
+<td>پست الکترونیک پرداخت کننده</td>
+</tr>
+<tr>
+<td><span class="indent">desc</span></td>
+<td>string</td>
+<td>توضیحات پرداخت کننده</td>
+</tr>
+<tr>
+<td>payment</td>
+<td>object</td>
+<td>اطلاعات پرداخت تراکنش</td>
+</tr>
+<tr>
+<td><span class="indent">track_id</span></td>
+<td>string</td>
+<td>کد رهگیری پرداخت</td>
+</tr>
+<tr>
+<td><span class="indent">amount</span></td>
+<td>number</td>
+<td>مبلغ قابل پرداخت</td>
+</tr>
+<tr>
+<td><span class="indent">card_no</span></td>
+<td>string</td>
+<td>شماره کارت پرداخت کننده با فرمت <code>123456******1234</code></td>
+</tr>
+<tr>
+<td><span class="indent">date</span></td>
+<td>timestamp</td>
 <td>زمان پرداخت تراکنش</td>
 </tr>
+<tr>
+<td>verify</td>
+<td>object</td>
+<td>اطلاعات تایید تراکنش</td>
+</tr>
+<tr>
+<td><span class="indent">date</span></td>
+<td>timestamp</td>
+<td>زمان تایید تراکنش</td>
+</tr>
+<tr>
+<td>settlement</td>
+<td>object</td>
+<td>اطلاعات واریز تراکنش</td>
+</tr>
+<tr>
+<td><span class="indent">track_id</span></td>
+<td>number</td>
+<td>کد رهگیری واریز</td>
+</tr>
+<tr>
+<td><span class="indent">amount</span></td>
+<td>number</td>
+<td>مبلغ قابل واریز</td>
+</tr>
+<tr>
+<td><span class="indent">date</span></td>
+<td>timestamp</td>
+<td>مبلغ واریز تراکنش</td>
+</tr>
 </tbody></table>
-
-<aside class="warning"> جهت جلوگیری از دوبار مصرف شدن یک پرداخت (Double Spending)،
-پذیرنده موظف است کلیدهای منحصر بفردی که از طریق API آیدی پی دریافت می‌کند را (مثل <code>id</code> و <code>track_id</code>)
-در دیتابیس خود ذخیره کند و از یکتا بودن آنها اطمینان حاصل فرماید.
-<br/>
-توجه داشته باشید که ممکن است یک مشتری رسید پرداخت آیدی پی را ذخیره کند و برای یک خرید دیگر از آن استفاده کند.
-<br/>
-مسئولیت بررسی و شناسایی Double Spending کاملا به عهده پذیرنده می‌باشد.</aside>
 <h1 id='ad39f18522'>وضعیت تراکنش</h1>
 <p>وضعیت تراکنش دارای کدهای زیر است که توضیح هر یک در جدول زیر آمده است:</p>
 
@@ -772,8 +1181,32 @@
 <td>خطا رخ داده است</td>
 </tr>
 <tr>
+<td>4</td>
+<td>بلوکه شده</td>
+</tr>
+<tr>
+<td>5</td>
+<td>برگشت به پرداخت کننده</td>
+</tr>
+<tr>
+<td>6</td>
+<td>برگشت خورده سیستمی</td>
+</tr>
+<tr>
+<td>10</td>
+<td>در انتظار تایید پرداخت</td>
+</tr>
+<tr>
 <td>100</td>
 <td>پرداخت تایید شده است</td>
+</tr>
+<tr>
+<td>101</td>
+<td>پرداخت قبلا تایید شده است</td>
+</tr>
+<tr>
+<td>200</td>
+<td>به دریافت کننده واریز شد</td>
 </tr>
 </tbody></table>
 <h1 id='d7b83cfb9c'>لیست خطاها</h1>
@@ -861,7 +1294,22 @@
 <td>52</td>
 <td>استعلام نتیجه ای نداشت.</td>
 </tr>
+<tr>
+<td>405</td>
+<td>53</td>
+<td>تایید پرداخت امکان پذیر نیست.</td>
+</tr>
+<tr>
+<td>405</td>
+<td>54</td>
+<td>مدت زمان تایید پرداخت سپری شده است.</td>
+</tr>
 </tbody></table>
+<h1 id='postman'>Postman</h1>
+<p>برای راحتی کار و بررسی سریعتر API آیدی پی می‌توانید فایل زیر را دریافت کنید و آن
+را در برنامه <a href="https://www.getpostman.com/downloads/">Postman</a> استفاده نمایید.</p>
+
+<p><a href="https://idpay.ir/web-service/v1.1/idpay-v1.1.postman_collection.json">دریافت فایل نمونه</a></p>
 
       </div>
       <div class="dark-box">
