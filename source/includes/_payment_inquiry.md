@@ -183,4 +183,4 @@ verify | object | اطلاعات تایید تراکنش
 settlement | object | اطلاعات واریز تراکنش
 <span class="indent">track_id</span> | number | کد رهگیری واریز
 <span class="indent">amount</span> | number | مبلغ قابل واریز
-<span class="indent">date</span> | timestamp | مبلغ واریز تراکنش
+<span class="indent">date</span> | timestamp | زمان واریز تراکنش به حساب بانکی پذیرنده
