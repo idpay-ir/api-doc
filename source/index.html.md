@@ -9,8 +9,8 @@ language_tabs:
 
 
 toc_footers:
-  - <a href='https://idpay.ir/web-service/v1.1/'>v1.1</a>
-  - <a href='https://idpay.ir/web-service/v1.0/'>v1.0</a>
+  - <a href='https://idpay.ir/web-service/v1.1/index.html'>v1.1</a>
+  - <a href='https://idpay.ir/web-service/v1.0/index.html'>v1.0</a>
   - "&nbsp;"
   - <a href='https://github.com/idpay-ir'>GitHub</a>
 
