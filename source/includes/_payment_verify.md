@@ -122,6 +122,7 @@ order_id | string | بله | شماره سفارش پذیرنده که در مر
     "track_id": "888001",
     "amount": "10000",
     "card_no": "123456******1234",
+    "hashed_card_no": "e59fa6241c94b8836e3d03120df33e80fd988888bba0a122240c2e7d23b48295",
     "date": "1546288500"
   },
   "verify": {
@@ -153,6 +154,7 @@ payment | object | اطلاعات پرداخت تراکنش
 <span class="indent">track_id</span> | string | کد رهگیری پرداخت
 <span class="indent">amount</span> | number | مبلغ قابل پرداخت
 <span class="indent">card_no</span> | string | شماره کارت پرداخت کننده با فرمت `123456******1234`
+<span class="indent">hashed_card_no</span> | string | هش شماره کارت پرداخت کننده با الگوریتم SHA256
 <span class="indent">date</span> | timestamp | زمان پرداخت تراکنش
 verify | object | اطلاعات تایید تراکنش
 <span class="indent">date</span> | timestamp | زمان تایید تراکنش
