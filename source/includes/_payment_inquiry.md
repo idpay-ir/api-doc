@@ -117,7 +117,7 @@ order_id | string | بله | شماره سفارش پذیرنده که در مر
   "order_id": "101",
   "amount": "10000",
   "card_no": "610433******1064",
-  "hashed_card_no": "d6933abc18de6dab26a401738d0f4269ec2836b69f87e51933b012f9a8c6d9db",
+  "hashed_card_no": "D6933ABC18DE6DAB26A401738D0F4269EC2836B69F87E51933B012F9A8C6D9DB",
   "date": "1533559373"
 }
 ```
