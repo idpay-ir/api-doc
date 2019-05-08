@@ -132,7 +132,7 @@ order_id | string | بله | شماره سفارش پذیرنده که در مر
     "track_id": "888001",
     "amount": "10000",
     "card_no": "123456******1234",
-    "hashed_card_no": "e59fa6241c94b8836e3d03120df33e80fd988888bba0a122240c2e7d23b48295",
+    "hashed_card_no": "E59FA6241C94B8836E3D03120DF33E80FD988888BBA0A122240C2E7D23B48295",
     "date": "1546288500"
   },
   "verify": {

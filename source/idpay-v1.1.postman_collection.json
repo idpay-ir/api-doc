@@ -240,7 +240,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"status\": 100,\n    \"track_id\": \"3872979\",\n    \"id\": \"e22952579725883bbad9f8fa429134bf\",\n    \"order_id\": \"101\",\n    \"amount\": \"10000\",\n    \"date\": \"1546288200\",\n    \"payment\": {\n        \"track_id\": \"123456789001\",\n        \"amount\": \"10000\",\n        \"card_no\": \"123456******1234\",\n        \"hashed_card_no\": \"e59fa6241c94b8836e3d03120df33e80fd988888bba0a122240c2e7d23b48295\",\n        \"date\": \"1549185575\"\n    },\n    \"verify\": {\n        \"date\": \"1546288500\"\n    }\n}"
+					"body": "{\n    \"status\": 100,\n    \"track_id\": \"3872979\",\n    \"id\": \"e22952579725883bbad9f8fa429134bf\",\n    \"order_id\": \"101\",\n    \"amount\": \"10000\",\n    \"date\": \"1546288200\",\n    \"payment\": {\n        \"track_id\": \"123456789001\",\n        \"amount\": \"10000\",\n        \"card_no\": \"123456******1234\",\n        \"hashed_card_no\": \"E59FA6241C94B8836E3D03120DF33E80FD988888BBA0A122240C2E7D23B48295\",\n        \"date\": \"1549185575\"\n    },\n    \"verify\": {\n        \"date\": \"1546288500\"\n    }\n}"
 				},
 				{
 					"name": "Success Status 101",
@@ -292,7 +292,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"status\": 101,\n    \"track_id\": \"3872979\",\n    \"id\": \"e22952579725883bbad9f8fa429134bf\",\n    \"order_id\": \"101\",\n    \"amount\": \"10000\",\n    \"date\": \"1546288200\",\n    \"payment\": {\n        \"track_id\": \"123456789001\",\n        \"amount\": \"10000\",\n        \"card_no\": \"123456******1234\",\n        \"hashed_card_no\": \"e59fa6241c94b8836e3d03120df33e80fd988888bba0a122240c2e7d23b48295\",\n        \"date\": \"1549185575\"\n    },\n    \"verify\": {\n        \"date\": \"1546288500\"\n    }\n}"
+					"body": "{\n    \"status\": 101,\n    \"track_id\": \"3872979\",\n    \"id\": \"e22952579725883bbad9f8fa429134bf\",\n    \"order_id\": \"101\",\n    \"amount\": \"10000\",\n    \"date\": \"1546288200\",\n    \"payment\": {\n        \"track_id\": \"123456789001\",\n        \"amount\": \"10000\",\n        \"card_no\": \"123456******1234\",\n        \"hashed_card_no\": \"E59FA6241C94B8836E3D03120DF33E80FD988888BBA0A122240C2E7D23B48295\",\n        \"date\": \"1549185575\"\n    },\n    \"verify\": {\n        \"date\": \"1546288500\"\n    }\n}"
 				},
 				{
 					"name": "Error Code 53",
@@ -491,7 +491,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"status\": 100,\n    \"track_id\": \"3872979\",\n    \"id\": \"e22952579725883bbad9f8fa429134bf\",\n    \"order_id\": \"101\",\n    \"amount\": \"10000\",\n    \"wage\": {\n        \"by\": \"payee\",\n        \"type\": \"percent\",\n        \"amount\": \"2500\"\n    },\n    \"date\": \"1546288200\",\n    \"payer\": {\n        \"name\": \"قاسم رادمان\",\n        \"phone\": \"09382198592\",\n        \"mail\": \"my@site.com\",\n        \"desc\": \"توضیحات پرداخت کننده\"\n    },\n    \"payment\": {\n        \"track_id\": \"123456789001\",\n        \"amount\": \"10000\",\n        \"card_no\": \"123456******1234\",\n        \"hashed_card_no\": \"e59fa6241c94b8836e3d03120df33e80fd988888bba0a122240c2e7d23b48295\",\n        \"date\": \"1549185575\"\n    },\n    \"verify\": {\n        \"date\": \"1546288500\"\n    },\n    \"settlement\": {\n        \"track_id\": \"\",\n        \"amount\": \"7500\",\n        \"date\": \"1546398000\"\n    }\n}"
+					"body": "{\n    \"status\": 100,\n    \"track_id\": \"3872979\",\n    \"id\": \"e22952579725883bbad9f8fa429134bf\",\n    \"order_id\": \"101\",\n    \"amount\": \"10000\",\n    \"wage\": {\n        \"by\": \"payee\",\n        \"type\": \"percent\",\n        \"amount\": \"2500\"\n    },\n    \"date\": \"1546288200\",\n    \"payer\": {\n        \"name\": \"قاسم رادمان\",\n        \"phone\": \"09382198592\",\n        \"mail\": \"my@site.com\",\n        \"desc\": \"توضیحات پرداخت کننده\"\n    },\n    \"payment\": {\n        \"track_id\": \"123456789001\",\n        \"amount\": \"10000\",\n        \"card_no\": \"123456******1234\",\n        \"hashed_card_no\": \"E59FA6241C94B8836E3D03120DF33E80FD988888BBA0A122240C2E7D23B48295\",\n        \"date\": \"1549185575\"\n    },\n    \"verify\": {\n        \"date\": \"1546288500\"\n    },\n    \"settlement\": {\n        \"track_id\": \"\",\n        \"amount\": \"7500\",\n        \"date\": \"1546398000\"\n    }\n}"
 				}
 			]
 		}
