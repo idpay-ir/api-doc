@@ -14,7 +14,8 @@ curl -X POST https://api.idpay.ir/v1.1/payment \
   "phone": "09382198592",
   "mail": "my@site.com",
   "desc": "توضیحات پرداخت کننده",
-  "callback": "https://example.com/callback"
+  "callback": "https://example.com/callback",
+  "reseller": null
 }'
 ```
 
@@ -28,6 +29,7 @@ $params = array(
   'mail' => 'my@site.com',
   'desc' => 'توضیحات پرداخت کننده',
   'callback' => 'https://example.com/callback',
+  'reseller' => null,
 );
 
 $ch = curl_init();
@@ -65,6 +67,7 @@ var options = {
     'mail': 'my@site.com',
     'desc': 'توضیحات پرداخت کننده',
     'callback': 'https://example.com/callback',
+    'reseller': null,
   },
   json: true,
 };
@@ -87,6 +90,7 @@ data := map[string]string{
   "mail":     "my@site.com",
   "desc":     "توضیحات پرداخت کننده",
   "callback": "https://example.com/callback",
+  "reseller": "null",
 }
 
 payload, _ := json.Marshal(data)
@@ -120,6 +124,7 @@ phone | string | خیر | تلفن همراه پرداخت کننده<br/>به �
 mail | string | خیر | پست الکترونیک پرداخت کننده<br/>به طول حداکثر 255 کاراکتر
 desc | string | خیر | توضیح تراکنش<br/>به طول حداکثر 255 کاراکتر
 callback | string | بله | آدرس بازگشت به سایت پذیرنده<br/>به طول حداکثر 2048 کاراکتر
+reseller | number | خیر | شناسه نمایندگی<br>جهت کسب اطلاعات بیشتر با پشتیبانی تماس بگیرید 
 
 **وضعیت پاسخ**
 
